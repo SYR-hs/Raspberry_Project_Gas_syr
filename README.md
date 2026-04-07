@@ -1,6 +1,6 @@
 # Raspberry_Project_Gas_syr
 
-소스코드는 main6-2.py 파일에 정리되어 있습니다.
+소스코드는 mainCode.py 파일에 정리되어 있습니다.
 
 라즈베리파이 가스감지 시연 영상 링크: https://youtu.be/tjLmHJh6SpQ
 
@@ -8,7 +8,7 @@
 
 # 추가적으로 찾아본 내용
 
-## 예외처리
+## myProjects 파일에 있던 또다른 main6-1.py 코드에 대하여
 
 
 ```
