@@ -10,14 +10,35 @@
 
 ## myProjects 파일에 있던 또다른 main6-1.py 코드에 대하여
 
+아래의 코드와 실험에 사용된 코드의 차이점은 가스 센서의 신호를 읽어오는 방식과 출력 방식에 있음을 확인했다.
+
+기존에 사용한 mainCode.py 는 가스 농도가 기준치를 초과했는지에 대한 여부만 확인하나, main6-1.py 코드는 가스의 농도를 숫자로 세밀하게 파악하는 방식이다.
+
+사용되는 라이브러리는 DigitalInputDevice과 MCP3208 (ADC 칩용)로 각각 다르다.
+
+### 입력 신호 형태
 
 ```
+from gpiozero import Buzzer, MCP3208
+import time
+
+bz = Buzzer(18)
+gas = MCP3208(channel=0)
+
 try:
-    # 오류가 발생할 수 있는 코드
-    x = int(input("숫자를 입력하세요: "))
-    print("입력한 값:", x)
-except:
-    # 오류가 발생했을 때 실행할 코드
-    print("숫자가 아닙니다.")
-```
+    while 1:
+        gasValue = gas.value * 100
+        print(gasValue)
+        if gasValue >= 10:
+            bz.on()
+        else:
+            bz.off()
 
+        time.sleep(0.2)
+
+
+except KeyboardInterrupt:
+    pass
+
+bz.off()
+```
